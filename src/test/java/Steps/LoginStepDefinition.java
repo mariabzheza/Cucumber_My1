@@ -1,6 +1,7 @@
 package Steps;
 
 import Base.BaseUtil;
+import Pages.LoginPage;
 import Transformation.EmailTransform;
 import Transformation.SalaryCountTransformer;
 import cucumber.api.DataTable;
@@ -72,16 +73,27 @@ public class LoginStepDefinition extends BaseUtil {
             System.out.println("The Password is " + user.password);
         }*/
 
+        LoginPage page = new LoginPage(base.driver);
+
         for (User user : users) {
-            base.driver.findElement(By.name("UserName")).sendKeys(user.userName);
-            base.driver.findElement(By.name("Password")).sendKeys(user.password);
+            /*base.driver.findElement(By.name("UserName")).sendKeys(user.userName);
+            base.driver.findElement(By.name("Password")).sendKeys(user.password);*/
+
+            System.out.println("\nThe UsersName is " + user.userName);
+            System.out.println("The Password is " + user.password);
+
+            page.login(user.userName, user.password);
+
         }
     }
 
     @And("^I click login button$")
     public void iClickLoginButton() throws Throwable {
-        //System.out.println("and click login button ");
-        base.driver.findElement(By.name("Login")).submit();
+        System.out.println("and click login button ");
+        //base.driver.findElement(By.name("Login")).submit();
+
+        LoginPage page = new LoginPage(base.driver);
+        page.clickLogin();
 
     }
 
@@ -90,7 +102,7 @@ public class LoginStepDefinition extends BaseUtil {
 
         //System.out.println("The driver is " + base.stepInfo);
         System.out.println("I should see the user's form page ");
-        Assert.assertEquals(base.driver.findElement(By.id("Initial")).isDisplayed(), true);
+        //Assert.assertEquals(base.driver.findElement(By.id("Initial")).isDisplayed(), true);
 
     }
 
