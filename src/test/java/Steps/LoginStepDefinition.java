@@ -102,6 +102,7 @@ public class LoginStepDefinition extends BaseUtil {
 
         //System.out.println("The driver is " + base.stepInfo);
         System.out.println("I should see the user's form page ");
+
         //Assert.assertEquals(base.driver.findElement(By.id("Initial")).isDisplayed(), true);
 
     }
