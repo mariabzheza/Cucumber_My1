@@ -13,7 +13,7 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         //this.txtUserName = txtUserName;
-        PageFactory.initElements(driver, this); 
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(how = How.NAME, using = "UserName")
